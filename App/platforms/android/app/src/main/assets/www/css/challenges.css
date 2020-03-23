@@ -1,0 +1,26 @@
+.icon-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: pink;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 9px 0;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: pink;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  margin: 0;
+}

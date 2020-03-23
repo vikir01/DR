@@ -1,0 +1,70 @@
+.icon-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: pink;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 9px 0;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: pink;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 12px;
+  font-size: 17px;
+  float: left;
+  width: 60%;
+  background: white;
+
+  border: 5px solid pink;
+  border-radius: 10%;
+  border-color: pink;
+  margin-top: 20px;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 2px;
+  background: #2196F3;
+  border-left: none;
+  cursor: pointer;
+
+  color: white;
+  border: 10px solid pink;
+  border-radius: 100%;
+  border-color: pink;
+  font-size:30px;
+  background-color: pink;
+  margin-top: 20px;
+}
+
+form.example button:hover {
+  background: pink;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
