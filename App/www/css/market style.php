@@ -70,6 +70,7 @@ body {
 form{
   display: flex;
   flex-grow: 1;
+  margin-right: 10px;
 }
 
 .divimgsearch{
@@ -77,13 +78,17 @@ display: inline-block;
 }
 
 .imgsearch{
-  width: 100px;
-  height: 100px;
-
+  width: 100%;
+  border-radius: 2%;
 }
 
 #output{
+  width: 100%;
+}
+
+.usershref{
   margin-left: 30px;
-  border-left-style: solid;
-  border-color: pink
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 }

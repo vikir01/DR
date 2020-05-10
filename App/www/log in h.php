@@ -1,6 +1,8 @@
 <?php
 	include('log in.php'); // Includes Login Script
-
+	// if(isset($_SESSION['login_user'])){
+	// 	header("location: home.php"); // Redirecting To Profile Page
+	// }
 ?>
 
 <!DOCTYPE html>

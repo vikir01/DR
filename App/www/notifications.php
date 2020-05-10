@@ -1,5 +1,14 @@
-<?php 
+<?php
+  ini_set('mysqli.connect_timeout', 300);
+  ini_set('default_socket_timeout', 300);
+?>
+<?php
     include('session.php');
+    if(!isset($_SESSION['login_user'])){
+        header("location: home.html"); // Redirecting To Home Page
+    }
+    $queries = array();
+    parse_str($_SERVER['QUERY_STRING'], $queries);
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,12 +27,31 @@
     </head>
 
     <body style="background-color: white">
-
-        <h1>Notifications</h1>
+        <h4 style="color:pink; text-align: center; font-size: 30px; margin-bottom: 10px; margin-top: 15px;"><i>Notifications</i></h4>
 
         <div class="tab">
-            
-                <table style="width: 100%">
+            <table style="width: 100%">
+                <?php
+                function displaynotification($login_session)
+                {
+                  $con = mysqli_connect("localhost", "root", "");
+                  mysqli_select_db($con, "victorious_shots");
+                  $qry = "select * from notifications where username='".$login_session."' order by id desc";
+                  $result = mysqli_query($con, $qry);
+
+                  while($row = mysqli_fetch_array($result))
+                  {
+                    echo '<tr class="tr"><td><i class="fa fa-bell">'.$row['notification'].'</i></td></tr>';
+
+                  }
+                    mysqli_close($con);
+                }
+                displaynotification($login_session);
+
+
+                ?>
+            </table>
+<!--                 <table style="width: 100%">
                     <tr class="tr">
                         <td><i class="fa fa-bell"></i>You've got a friend reqest from someone.</td>
                     </tr>
@@ -32,20 +60,7 @@
                     </tr>
                     <tr class="tr">
                         <td><i class="fa fa-bell"></i>Someone sent you a message.</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>..............................</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>...................................</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>..............................</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>......................................</td>
-                    </tr>
-                </table>
+                </table> -->
         </div>
 
         <div class="icon-bar">

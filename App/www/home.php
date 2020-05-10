@@ -11,56 +11,69 @@
         <link rel="stylesheet" type="text/css" href="css/home.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            function searchq(){
+                var searchTxt = $("input[name='search']").val();
+                if(searchTxt.length == 0){
+                    $("#output").html('');
+                }
+                else{
+                    $.post("search.php", {searchVal: searchTxt}, function(output){
+                            $("#output").html(output);
+                    });
+                }
+            }
+        </script>
 
         <title>Victorious Shots</title>
 
     </head>
 
-    <body style="background-color: white">
 
+    <body style="background-color: white">
+        
+        <div class="wrap">
+          <div class="search">
+            <form action="home.php" method="POST">
+                <input type="text" name="search" class="searchTerm" placeholder="Search..." onkeyup="searchq();">
+                <a class="unames" href="friends.php" id="frbutt"><i class="fa fa-group"></i></a>
+            </form>
+          </div>
         </div>
 
         <br>
 
+        <div id="output"></div>
 
         <div class="row"> 
           <div class="column">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
-            <img src="./img/4.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
+            <?php
+            function displayimage()
+            {
+              $con = mysqli_connect("localhost", "root", "");
+              mysqli_select_db($con, "victorious_shots");
+              $qry = "select * from images order by id desc";
+              $result = mysqli_query($con, $qry);
+              $i = 1;
+              while($row = mysqli_fetch_array($result))
+              {
+                if($i%2!=0){
+                    echo '<div>';
+                }
+                echo '<img class="i" src="data:image/jpeg;base64,'.$row[2].'">';
+                if($i%2==0){
+                    echo '</div>';
+                }
+                
+                $i++;
+              }
+                mysqli_close($con);
+            }
+            displayimage();
+            ?>
           </div>
-          <div class="column">            
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
-            <img src="./img/4.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-          </div>  
-          <div class="column">
-            <img src="./img/a3.jpg" style="width:100%">
-            <img src="./img/4.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
-          </div>
-          <div class="column">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/4.jpg" style="width:100%">
-            <img src="./img/a1.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
-            <img src="./img/a2.jpg" style="width:100%">
-            <img src="./img/a3.jpg" style="width:100%">
 
-          </div>
         </div>
 
         <div class="icon-bar">

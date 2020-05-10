@@ -28,7 +28,6 @@ body {
 img {
   width:  100%;
   border-radius: 10px;
-  z-index: -1;
   position: relative;
 }
 
@@ -69,4 +68,84 @@ img {
   -ms-transform: translate(-50%, -50%);
   color: white;
   text-align: center;
+}
+
+
+
+#output{
+  margin-left: 30px;
+  border-left-style: solid;
+  border-color: pink
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+ /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-height: 300px;
+  overflow: auto;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.p{
+
+}
+
+.formmodal {
+    display: block;
+    margin-top: 0em;
+    text-align: center;
+}
+
+.modalImages{
+  max-width: 100%;
+  border: 2px solid pink;
+  border-radius: 5%;
+  border-color: pink;
+}
+
+.upload {
+  border: solid pink 2px;
+  background-color: white;
+  border-color: pink;
+  color: pink;
+  border-radius: 50px;
+  margin-top: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: Times New Roman;
+  text-align: center;
+  padding: 10px 30px;
 }

@@ -27,7 +27,7 @@
                     $uname = $row['username'];
                     $id = $row['id'];
 
-                    $output .= '<div><a href="profile.php?username='.$uname.'">'.$uname.'</a></div>';
+                    $output .= '<div><a class="usershref" href="profile.php?username='.$uname.'">'.$uname.'</a></div>';
                 }
             }
         }

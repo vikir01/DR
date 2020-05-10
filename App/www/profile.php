@@ -43,20 +43,62 @@
     
     <div id="myModalPro" class="modalpro">
       <div class="modal-content-pro">
+        <p style="color:pink; font-size: 20px; margin-bottom: 0px;">Please select a photo.</p>
         <span class="closepro">&times;</span>
-        <p>Some text in the Modal..</p>
+              <form method="POST" enctype="multipart/form-data">
+                <br>
+                
+                <input type="file" name="image" id="filemyModalPro" class="inputfile" onChange="displayImagePro(this)" class="form-control" style="display: none;">
+
+                <label for="file"><img src="img/blank.jpg" onClick="triggerClickPro()" class="modalimages" id="profileDisplaymyModalPro"></label>
+
+                <br>
+                <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
+                <input type="hidden" name="actiontype" value="profile" />
+                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalPro">
+              </form>
+
       </div>
     </div>
 
       
      <div id="myModalCov" class="modalcov">
       <div class="modal-content-cov">
+        <p style="color:pink; font-size: 20px; margin-bottom: 0px;">Please select a photo.</p>
         <span class="closecov">&times;</span>
-        <p>Some text in the Modal..</p>
+              <form method="POST" enctype="multipart/form-data">
+                <br>
+                
+                <input type="file" name="image" id="filemyModalCov" class="inputfile" onChange="displayImageCov(this)" class="form-control" style="display: none;">
+
+                <label for="file"><img src="img/blank.jpg" onClick="triggerClickCov()" class="modalimages" id="profileDisplaymyModalCov"></label>
+
+                <br>
+                <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
+                <input type="hidden" name="actiontype" value="cover" />
+                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalCov">
+              </form>
       </div>
      </div>
 
-    <img class="imgA1" id="myImg" src="./img/cover.png" style="width:100%; max-width:3000px">
+    <?php
+      function displayimagecov($login_session)
+      {
+        $con = mysqli_connect("localhost", "root", "");
+        mysqli_select_db($con, "victorious_shots");
+        $qry = "select cover from registration where username='".$login_session."' ";
+        $result = mysqli_query($con, $qry);
+        // echo '<div class="cont">';
+        $row = mysqli_fetch_array($result);
+        echo '<img class="imgA1" id="myImg" src="data:image/jpeg;base64,'.$row[0].'" style="width:100%; max-width:3000px;">';
+
+        // echo '</div>';
+        mysqli_close($con);
+      }
+
+      displayimagecov($queries['username']);
+    ?><!-- 
+    <img class="imgA1" id="myImg" src="./img/cover.png" style="width:100%; max-width:3000px"> -->
 
     <div id="myModal" class="modal">
       <span class="close">&times;</span>
@@ -65,7 +107,23 @@
     </div>
 
     <div class="tab">
-      <img class="imgB1" src="./img/def.jpg" alt="" style="width:20%;">
+      <?php
+        function displayimagepro($login_session)
+        {
+          $con = mysqli_connect("localhost", "root", "");
+          mysqli_select_db($con, "victorious_shots");
+          $qry = "select profile from registration where username='".$login_session."' ";
+          $result = mysqli_query($con, $qry);
+          // echo '<div class="cont">';
+          $row = mysqli_fetch_array($result);
+          echo '<img id="up" class="imgB1" src="data:image/jpeg;base64,'.$row[0].'">';
+
+          // echo '</div>';
+          mysqli_close($con);
+        }
+        displayimagepro($queries['username']);
+      ?>
+<!--       <img id="down" class="imgB1" src="./img/def.jpg" alt="" style="width:20%;">  -->
       <div class="tab-inner">
         <div class="buttons">
           <button class="tablinks" onclick="openTab(event, 'Bio')" id="defaultOpen">Bio</button>
@@ -106,14 +164,15 @@
               <form method="POST" enctype="multipart/form-data">
                 <br>
                 
-                <input type="file" name="image" id="file" class="inputfile" onChange="displayImage(this)" class="form-control" style="display: none;">
+                <input type="file" name="image" id="filemyModalGei" class="inputfile" onChange="displayImageGei(this)" class="form-control" style="display: none;">
 
-                <label for="file"><img src="img/blank.jpg" onClick="triggerClick()" id="profileDisplay"></label>
+                <label for="file"><img src="img/blank.jpg" onClick="triggerClickGei()" class="modalimages" id="profileDisplaymyModalGei"></label>
                 <br>
                 <input type="text" id="tags" name="tags">
                 <br>
                 <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
-                <input type="submit" name="submit" value="Upload" id="salam">
+                <input type="hidden" name="actiontype" value="images" />
+                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalGei">
               </form>
 
               </div>
@@ -126,24 +185,110 @@
       <?php
         if(isset($_POST['submit']))
         {
-          $info = @getimagesize($_FILES['image']['tmp_name']);
-          if($info == FALSE)
+            switch ($_POST['actiontype']) {
+
+               case 'profile':
+                      $info = @getimagesize($_FILES['image']['tmp_name']);
+                        if($info == FALSE)
+                        {
+                           $message = "Please select an image.";
+                           echo "<script type='text/javascript'>alert('$message');</script>";
+                        }
+                        else
+                        {
+                          $image = addslashes($_FILES['image']['tmp_name']);
+                          $name = addslashes($_FILES['image']['name']);
+                          $image = file_get_contents($image);
+                          $image = base64_encode($image);
+                          $username = $_REQUEST['username'];
+                          saveimagepro($image, $username, $login_session);
+                      }
+                   break;
+
+               case 'cover':
+                   $info = @getimagesize($_FILES['image']['tmp_name']);
+                        if($info == FALSE)
+                        {
+                           $message = "Please select an image.";
+                           echo "<script type='text/javascript'>alert('$message');</script>";
+                        }
+                        else
+                        {
+                          $image = addslashes($_FILES['image']['tmp_name']);
+                          $name = addslashes($_FILES['image']['name']);
+                          $image = file_get_contents($image);
+                          $image = base64_encode($image);
+                          $username = $_REQUEST['username'];
+                          saveimagecov($image, $username, $login_session);
+                        }
+                   break;
+
+                case 'images':
+
+                        $info = @getimagesize($_FILES['image']['tmp_name']);
+                        if($info == FALSE)
+                        {
+                           $message = "Please select an image.";
+                           echo "<script type='text/javascript'>alert('$message');</script>";
+                        }
+                        else
+                        {
+                          $image = addslashes($_FILES['image']['tmp_name']);
+                          $name = addslashes($_FILES['image']['name']);
+                          $image = file_get_contents($image);
+                          $image = base64_encode($image);
+                          $username = $_REQUEST['username'];
+                          $tags = $_REQUEST['tags'];
+                          saveimage($name, $image, $username, $tags);
+                        }
+                  break;
+            }
+          
+          
+        }
+        displayimage($queries['username']);
+
+        function saveimagepro($profile, $username, $login_session){
+          $con = mysqli_connect("localhost", "root", "");
+          mysqli_select_db($con, "victorious_shots");
+          // $qry = "insert into images(name, image, username) values ('$name', '$image', '$username')";
+          $qry = "update registration set profile='$profile' where username='".$login_session."'";
+
+          $result = mysqli_query($con, $qry);
+          $imgid = mysqli_insert_id($con);
+
+          if($result)
           {
-             $message = "Please select an image.";
-             echo "<script type='text/javascript'>alert('$message');</script>";
+            $message1 = "Image uploaded.";
+            echo "<script type='text/javascript'>alert('$message1');</script>";
           }
           else
           {
-            $image = addslashes($_FILES['image']['tmp_name']);
-            $name = addslashes($_FILES['image']['name']);
-            $image = file_get_contents($image);
-            $image = base64_encode($image);
-            $username = $_REQUEST['username'];
-            $tags = $_REQUEST['tags'];
-            saveimage($name, $image, $username, $tags);
+            $message2 = "Image not uploaded.";
+            echo "<script type='text/javascript'>alert('$message2');</script>";
           }
         }
-        displayimage($queries['username']);
+
+        function saveimagecov($cover, $username, $login_session){
+          $con = mysqli_connect("localhost", "root", "");
+          mysqli_select_db($con, "victorious_shots");
+          // $qry = "insert into images(name, image, username) values ('$name', '$image', '$username')";
+          $qry = "update registration set cover='$cover' where username='".$login_session."'";
+
+          $result = mysqli_query($con, $qry);
+          $imgid = mysqli_insert_id($con);
+
+          if($result)
+          {
+            $message1 = "Image uploaded.";
+            echo "<script type='text/javascript'>alert('$message1');</script>";
+          }
+          else
+          {
+            $message2 = "Image not uploaded.";
+            echo "<script type='text/javascript'>alert('$message2');</script>";
+          }
+        }
 
         function saveimage($name, $image, $username, $tags)
         {

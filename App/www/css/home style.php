@@ -1,3 +1,6 @@
+<?php
+    header("Content-type: text/css; charset: UTF-8");
+?>
 .icon-bar {
   position: fixed;
   bottom: 0;
@@ -20,6 +23,7 @@
 }
 
 body {
+  background-color: black;
   font-family: Times New Roman;
   position: relative;
   margin: 0;
@@ -78,7 +82,7 @@ form.example::after {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-bottom: 70px;
+  padding: 0 4px;
 }
 
 /* Create four equal columns that sits next to each other */
@@ -87,11 +91,10 @@ form.example::after {
   flex: 25%;
   max-width: 25%;
   padding: 0 4px;
-  margin-top: -30px;
 }
 
 .column img {
-  margin-top: 30px;
+  margin-top: 8px;
   vertical-align: middle;
   width: 100%;
   border-radius: 2%;
@@ -102,12 +105,10 @@ form.example::after {
   .column {
     -ms-flex: 50%;
     flex: 50%;
-    max-width: 100%;
+    max-width: 50%;
   }
 }
-.i{
-  width: 100%;
-}
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 100px) {
   .column {
@@ -116,69 +117,46 @@ form.example::after {
     max-width: 100%;
   }
 }
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-.search {
-  position: relative;
-  display: flex;
-  text-align:center;
-  margin-left: 10px;
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.searchTerm { 
-  margin: 10px;
-  border: 3px solid pink;
-  padding: 15px;
-  padding-left: 5px;
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
   height: 20px;
-  border-radius: 10px;
-  color: black;
-  flex-grow: 1;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
 }
 
 .searchTerm:focus{
-  color: black;
-  flex-grow: 1;
+  color: #00B4CC;
 }
 
-#frbutt{
-  background-color: pink;
-  color: white;
-  padding: 5px;
-  font-size: 20px;
-  border: none;
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
-  border-radius: 50%;
-  display: block;
-  width: 30px;
-  height: 30px;
-  margin-top: 15px;
-}
-
-form{
-  display: flex;
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-.divimgsearch{
-}
-
-.imgsearch{
-  width: 100%;
-  border-radius: 2%;
-}
-
-#output{
-}
-
-#output{
-  width: 100%;
-}
-
-.usershref{
-  margin-left: 30px;
-  color: black;
-  text-decoration: none;
   font-size: 20px;
 }

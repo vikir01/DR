@@ -16,7 +16,7 @@ if (!empty($username) || !empty($password) || !empty($email)) {
     } else {
 
      $SELECT = "SELECT username From registration Where username = ? Limit 1";
-     $INSERT = "INSERT Into registration (username, password, email) values(?, ?, ?)";
+     $INSERT = "INSERT Into registration (username, password, email, profile, cover) values(?, ?, ?, ?, ?)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
      $stmt->bind_param("s", $username);
@@ -26,9 +26,15 @@ if (!empty($username) || !empty($password) || !empty($email)) {
      $rnum = $stmt->num_rows;
 
      if ($rnum==0) {
+      $cover = file_get_contents("./img/cover.png");
+      $cover = base64_encode($cover);
+
+      $profile = file_get_contents("./img/def.jpg");
+      $profile = base64_encode($profile);
+
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
-      $stmt->bind_param("sss", $username, $password, $email);
+      $stmt->bind_param("sssss", $username, $password, $email, $profile, $cover);
       $stmt->execute();
       header("location: /");
       // $message = "Account created successfully!";

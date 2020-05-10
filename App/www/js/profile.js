@@ -88,14 +88,43 @@
       }
     }
     //////////////////////////////////////////////////////////////////
-    function triggerClick(e) {
-      document.querySelector('#image').click();
+    function triggerClickPro(e) {
+      document.querySelector('#filemyModalPro').click();
     }
-    function displayImage(e) {
+    function displayImagePro(e) {
+      
       if (e.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e){
-          document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+          document.querySelector('#profileDisplaymyModalPro').setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(e.files[0]);
+      }
+    }
+    /////
+    function triggerClickCov(e) {
+      document.querySelector('#filemyModalCov').click();
+    }
+    function displayImageCov(e) {
+      
+      if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e){
+          document.querySelector('#profileDisplaymyModalCov').setAttribute('src', e.target.result);
+        }
+        reader.readAsDataURL(e.files[0]);
+      }
+    }
+    //////
+    function triggerClickGei(e) {
+      document.querySelector('#filemyModalGei').click();
+    }
+    function displayImageGei(e) {
+      
+      if (e.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e){
+          document.querySelector('#profileDisplaymyModalGei').setAttribute('src', e.target.result);
         }
         reader.readAsDataURL(e.files[0]);
       }

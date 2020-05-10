@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2020 at 10:00 PM
+-- Generation Time: May 10, 2020 at 04:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `victorious_shots`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `challenges`
+--
+
+CREATE TABLE `challenges` (
+  `id` int(11) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `challenge` varchar(40) NOT NULL,
+  `image` longblob NOT NULL,
+  `result` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -45,6 +59,18 @@ CREATE TABLE `images` (
   `name` varchar(40) NOT NULL,
   `image` longblob NOT NULL,
   `username` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `notification` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -79,6 +105,12 @@ CREATE TABLE `tags` (
 --
 
 --
+-- Indexes for table `challenges`
+--
+ALTER TABLE `challenges`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `followers`
 --
 ALTER TABLE `followers`
@@ -88,6 +120,12 @@ ALTER TABLE `followers`
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -107,28 +145,40 @@ ALTER TABLE `tags`
 --
 
 --
+-- AUTO_INCREMENT for table `challenges`
+--
+ALTER TABLE `challenges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

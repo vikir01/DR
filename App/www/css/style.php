@@ -129,6 +129,7 @@ img {
   position: absolute;
   top: -21 0px;
   left: 0;
+  height: 90px;
   max-width: 90px;
   min-width: 90px;
   margin-top: -200px;
@@ -268,17 +269,24 @@ img {
   width: 100%;
   min-width: 300px;
   overflow-y: auto; 
+  margin-bottom: 70px;
 }
 
 .idiv {
   flex-basis: 29%;
   width: 27%;
-  margin: 10px;
+  margin: 5px;
   min-width:30px;
 }
 
 .i{
   width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 5%
+
 }
 
 /* The Modal (background) */
@@ -362,7 +370,8 @@ img {
   padding: 10px 30px;
 
 }
-#myBtnPro{
+
+#myBtnPro {
   background: white;
   border: none;
   font-family: Times New Roman;
@@ -370,10 +379,8 @@ img {
   padding: 12px 16px;
 }
 
-
-
-.modalpro{
-  display: none; /* Hidden by default */
+.modalpro {
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -382,8 +389,8 @@ img {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  text-align: center;
 }
 
 .modal-content-pro {
@@ -399,7 +406,10 @@ img {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  margin-top: 20px;
+  position: relative;
+  right: 0;
+  margin-right: 5px;
+  margin-top: -55px;
 }
 
 .close:hover,
@@ -418,7 +428,7 @@ img {
 }
 
 .modalcov {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -427,8 +437,8 @@ img {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  text-align: center;
 }
 
 .modal-content-cov {
@@ -444,6 +454,10 @@ img {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: relative;
+  right: 0;
+  margin-right: 5px;
+  margin-top: -55px;
 }
 
 .close:hover,
@@ -468,4 +482,32 @@ img {
     position: fixed;
     margin-bottom: 80px;
     margin-right: 20px;
+}
+
+.modalimages{
+  max-width: 200px;
+  max-height: 200px;
+  border: 2px solid pink;
+  border-radius: 10%;
+  border-color: pink;
+}
+
+.upload{
+  border: solid pink 2px;
+  background-color: white;
+  border-color: pink;
+  color: pink;
+  border-radius: 50px;
+  margin-top: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: Times New Roman;
+  text-align: center;
+  padding: 10px 30px;
+}
+
+#tags{
+  border-style: solid pink;
+  border-color: pink;
+  border-radius: 10%;
 }
