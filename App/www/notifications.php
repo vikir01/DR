@@ -47,20 +47,9 @@
                     mysqli_close($con);
                 }
                 displaynotification($login_session);
-
-
                 ?>
             </table>
-<!--                 <table style="width: 100%">
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>You've got a friend reqest from someone.</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>There is a challenge you might like.</td>
-                    </tr>
-                    <tr class="tr">
-                        <td><i class="fa fa-bell"></i>Someone sent you a message.</td>
-                </table> -->
+
         </div>
 
         <div class="icon-bar">

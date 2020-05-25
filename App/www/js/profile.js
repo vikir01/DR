@@ -63,13 +63,13 @@
     }
     ///////////////////////////////////////////////////////////////////////
     // Get the modal
-    var modalgei = document.getElementById("myModalGei");
+    var modalgei = document.getElementById("myModalMain");
 
     // Get the button that opens the modal
-    var btngei = document.getElementById("myBtnGei");
+    var btngei = document.getElementById("myBtnCamera");
 
     // Get the <span> element that closes the modal
-    var spangei = document.getElementsByClassName("closegei")[0];
+    var spangei = document.getElementsByClassName("closemain")[0];
 
     // When the user clicks the button, open the modal 
     btngei.onclick = function() {
@@ -116,15 +116,15 @@
       }
     }
     //////
-    function triggerClickGei(e) {
-      document.querySelector('#filemyModalGei').click();
+    function triggerClickMain(e) {
+      document.querySelector('#filemyModalMain').click();
     }
-    function displayImageGei(e) {
+    function displayImageMain(e) {
       
       if (e.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e){
-          document.querySelector('#profileDisplaymyModalGei').setAttribute('src', e.target.result);
+          document.querySelector('#profileDisplaymyModalMain').setAttribute('src', e.target.result);
         }
         reader.readAsDataURL(e.files[0]);
       }

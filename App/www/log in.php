@@ -1,6 +1,6 @@
 <?php
   session_start(); // Starting session_commit()
-  $error = 'im gay'; // Variable To Store Error Message
+  $error = 'error'; // Variable To Store Error Message
   if (isset($_POST['submit'])) {
     if (empty($_POST['username']) || empty($_POST['password'])) {
       $error = "Username or Password is invalid";

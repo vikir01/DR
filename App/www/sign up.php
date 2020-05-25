@@ -37,13 +37,6 @@ if (!empty($username) || !empty($password) || !empty($email)) {
       $stmt->bind_param("sssss", $username, $password, $email, $profile, $cover);
       $stmt->execute();
       header("location: /");
-      // $message = "Account created successfully!";
-      // echo "<script type='text/javascript'>alert('$message');</script>";
-
-      
-      // $myfile = fopen("log in h.php", "a+") or die("Unable to open file!");
-      // echo fread($myfile,filesize("log in h.php"));
-      // fclose($myfile);
      }
      else {
       $message1 = "Username is already taken!";

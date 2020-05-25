@@ -35,7 +35,6 @@
             <span id="closeflowersModal" class="close">&times;</span>
             <p class="p">Make a picture as close as possible to the one below.</p>
             <p class="p">Click on the photo to add your own photography.</p>
-            <!-- <img class="modalImages" src="img/challenge1_1.jpg" alt="error"> -->
             <form class="formmodal" method="POST" enctype="multipart/form-data">
                 <br>
                 <input type="file" name="image" id="fileflowersModal" class="inputfile" onChange="displayImageFlowers(this)" class="form-control" style="display: none;">
@@ -51,7 +50,6 @@
             <span id="closecatsModal" class="close">&times;</span>
             <p class="p">Make a picture as close as possible to the one below.</p>
             <p class="p">Click on the photo to add your own photography.</p>
-            <!-- <img class="modalImages" src="img/challenge6_1.jpg" alt="error"> -->
             <form class="formmodal" method="POST" enctype="multipart/form-data">
                 <br>
                 <input type="file" name="image" id="filecatsModal" class="inputfile" onChange="displayImageCats(this)" class="form-control" style="display: none;">
@@ -67,7 +65,6 @@
             <span id="closedogsModal" class="close">&times;</span>
             <p class="p">Make a picture as close as possible to the one below.</p>
             <p class="p">Click on the photo to add your own photography.</p>
-            <!-- <img class="modalImages" src="img/challenge7_1.jpg" alt="error"> -->
             <form class="formmodal" method="POST" enctype="multipart/form-data">
                 <br>
                 <input type="file" name="image" id="filedogsModal" class="inputfile" onChange="displayImageDogs(this)" class="form-control" style="display: none;">
@@ -107,11 +104,8 @@
           $con = mysqli_connect("localhost", "root", "");
           mysqli_select_db($con, "victorious_shots");
           $qry = "insert into challenges(username, challenge, image) values ('$username','$challenge', '$image')";
-          // $qry = "update registration set cover='$cover' where username='".$login_session."'";
-
           $result = mysqli_query($con, $qry);
           $imgid = mysqli_insert_id($con);
-
           if($result)
           {
             $message1 = "Image uploaded.";
@@ -125,7 +119,6 @@
         }
         if(isset($_POST['submit']))
         {
-
               $info = @getimagesize($_FILES['image']['tmp_name']);
                 if($info == FALSE)
                 {
@@ -140,13 +133,9 @@
                   $image = base64_encode($image);
                   $username = $_REQUEST['username'];
                   $challenge = $_REQUEST['challenge'];
-
                   saveimage($username, $challenge, $image);
               }
-
-        }
-          
-          
+        }             
         ?>
 
         <script type="text/javascript" src="js/challenges.js"/></script>

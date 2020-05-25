@@ -1,0 +1,38 @@
+#log-in{
+  color: white;
+  font-size: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.blank{
+  width: 100%;
+  padding: 15px 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 50px;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.butt{
+  background-color: pink;
+  border-color: white;
+  color: white;
+  border-radius: 50px;
+  margin-left: 44px;
+  margin-top: 20px;
+  border: 2px solid white;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: Times New Roman;
+  text-align: center;
+  padding: 10px 30px;
+}

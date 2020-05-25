@@ -215,7 +215,7 @@ img {
   margin-top: 10px;
 }
 
-#myBtnGei{
+#myBtnCamera{
   background-color: pink;
   color: white;
   padding: 10px;
@@ -290,7 +290,7 @@ img {
 }
 
 /* The Modal (background) */
-.modalgei {
+.modalmain {
   display: none;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -305,7 +305,7 @@ img {
 }
 
 /* Modal Content */
-.modal-content-gei {
+.modal-content-main {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -314,7 +314,7 @@ img {
 }
 
 /* The Close Button */
-.closegei {
+.closemain {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
@@ -325,8 +325,8 @@ img {
   margin-top: -55px;
 }
 
-.closegei:hover,
-.closegei:focus {
+.closemain:hover,
+.closemain:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

@@ -1,3 +1,11 @@
+/*Styling the body*/
+body {
+  font-family: Times New Roman;
+  position: relative;
+  margin: 0;
+}
+
+/*Styling the navigation bar*/
 .icon-bar {
   position: fixed;
   bottom: 0;
@@ -19,55 +27,33 @@
   background-color: pink;
 }
 
-body {
-  font-family: Times New Roman;
+/*Styling the search bar*/
+.search {
   position: relative;
-  margin: 0;
+  display: flex;
+  text-align:center;
+  margin-left: 10px;
+}
+
+.searchTerm { 
+  margin: 10px;
+  border: 3px solid pink;
+  padding: 15px;
+  padding-left: 5px;
+  height: 20px;
+  border-radius: 10px;
+  color: black;
+  flex-grow: 1;
+}
+
+.searchTerm:focus{
+  color: black;
+  flex-grow: 1;
 }
 
 * {
   box-sizing: border-box;
 }
-
-/*form.example input[type=text] {
-  padding: 12px;
-  font-size: 17px;
-  float: left;
-  width: 60%;
-  background: white;
-
-  border: 5px solid pink;
-  border-radius: 10%;
-  border-color: pink;
-  margin-top: 20px;
-}
-
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 2px;
-  background: #2196F3;
-  border-left: none;
-  cursor: pointer;
-
-  color: white;
-  border: 10px solid pink;
-  border-radius: 100%;
-  border-color: pink;
-  font-size:30px;
-  background-color: pink;
-  margin-top: 20px;
-}
-
-form.example button:hover {
-  background: pink;
-}
-
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}*/
 
 * {
   box-sizing: border-box;
@@ -118,28 +104,7 @@ form.example::after {
 }
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-.search {
-  position: relative;
-  display: flex;
-  text-align:center;
-  margin-left: 10px;
-}
 
-.searchTerm { 
-  margin: 10px;
-  border: 3px solid pink;
-  padding: 15px;
-  padding-left: 5px;
-  height: 20px;
-  border-radius: 10px;
-  color: black;
-  flex-grow: 1;
-}
-
-.searchTerm:focus{
-  color: black;
-  flex-grow: 1;
-}
 
 #frbutt{
   background-color: pink;
@@ -161,15 +126,9 @@ form{
   margin-right: 10px;
 }
 
-.divimgsearch{
-}
-
 .imgsearch{
   width: 100%;
   border-radius: 2%;
-}
-
-#output{
 }
 
 #output{

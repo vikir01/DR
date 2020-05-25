@@ -55,7 +55,7 @@
                 <br>
                 <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
                 <input type="hidden" name="actiontype" value="profile" />
-                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalPro">
+                <input class="upload" type="submit" name="submit" value="Upload" id="idModalPro">
               </form>
 
       </div>
@@ -76,7 +76,7 @@
                 <br>
                 <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
                 <input type="hidden" name="actiontype" value="cover" />
-                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalCov">
+                <input class="upload" type="submit" name="submit" value="Upload" id="idModalCov">
               </form>
       </div>
      </div>
@@ -88,17 +88,13 @@
         mysqli_select_db($con, "victorious_shots");
         $qry = "select cover from registration where username='".$login_session."' ";
         $result = mysqli_query($con, $qry);
-        // echo '<div class="cont">';
         $row = mysqli_fetch_array($result);
         echo '<img class="imgA1" id="myImg" src="data:image/jpeg;base64,'.$row[0].'" style="width:100%; max-width:3000px;">';
-
-        // echo '</div>';
         mysqli_close($con);
       }
 
       displayimagecov($queries['username']);
-    ?><!-- 
-    <img class="imgA1" id="myImg" src="./img/cover.png" style="width:100%; max-width:3000px"> -->
+    ?>
 
     <div id="myModal" class="modal">
       <span class="close">&times;</span>
@@ -114,16 +110,13 @@
           mysqli_select_db($con, "victorious_shots");
           $qry = "select profile from registration where username='".$login_session."' ";
           $result = mysqli_query($con, $qry);
-          // echo '<div class="cont">';
           $row = mysqli_fetch_array($result);
           echo '<img id="up" class="imgB1" src="data:image/jpeg;base64,'.$row[0].'">';
-
-          // echo '</div>';
           mysqli_close($con);
         }
         displayimagepro($queries['username']);
       ?>
-<!--       <img id="down" class="imgB1" src="./img/def.jpg" alt="" style="width:20%;">  -->
+
       <div class="tab-inner">
         <div class="buttons">
           <button class="tablinks" onclick="openTab(event, 'Bio')" id="defaultOpen">Bio</button>
@@ -152,27 +145,25 @@
 
     <div>
       <?php if($login_session==$queries['username']):?>
-          <button id="myBtnGei"><i class="fa fa-camera"></i></button>
+          <button id="myBtnCamera"><i class="fa fa-camera"></i></button>
 
-          <!-- The Modal -->
-          <div id="myModalGei" class="modalgei">
+          <div id="myModalMain" class="modalmain">
 
-            <!-- Modal content -->
-            <div class="modal-content-gei">
+            <div class="modal-content-main">
               <p style="color:pink; font-size: 20px; margin-bottom: 0px;">Please select a photo.</p>
-              <span class="closegei">&times;</span>
+              <span class="closemain">&times;</span>
               <form method="POST" enctype="multipart/form-data">
                 <br>
                 
-                <input type="file" name="image" id="filemyModalGei" class="inputfile" onChange="displayImageGei(this)" class="form-control" style="display: none;">
+                <input type="file" name="image" id="filemyModalMain" class="inputfile" onChange="displayImageMain(this)" class="form-control" style="display: none;">
 
-                <label for="file"><img src="img/blank.jpg" onClick="triggerClickGei()" class="modalimages" id="profileDisplaymyModalGei"></label>
+                <label for="file"><img src="img/blank.jpg" onClick="triggerClickMain()" class="modalimages" id="profileDisplaymyModalMain"></label>
                 <br>
                 <input type="text" id="tags" name="tags">
                 <br>
                 <input type="hidden" name="username" value="<?php echo $login_session; ?>" />
                 <input type="hidden" name="actiontype" value="images" />
-                <input class="upload" type="submit" name="submit" value="Upload" id="salammyModalGei">
+                <input class="upload" type="submit" name="submit" value="Upload" id="idModalMain">
               </form>
 
               </div>
@@ -251,7 +242,6 @@
         function saveimagepro($profile, $username, $login_session){
           $con = mysqli_connect("localhost", "root", "");
           mysqli_select_db($con, "victorious_shots");
-          // $qry = "insert into images(name, image, username) values ('$name', '$image', '$username')";
           $qry = "update registration set profile='$profile' where username='".$login_session."'";
 
           $result = mysqli_query($con, $qry);
@@ -272,7 +262,6 @@
         function saveimagecov($cover, $username, $login_session){
           $con = mysqli_connect("localhost", "root", "");
           mysqli_select_db($con, "victorious_shots");
-          // $qry = "insert into images(name, image, username) values ('$name', '$image', '$username')";
           $qry = "update registration set cover='$cover' where username='".$login_session."'";
 
           $result = mysqli_query($con, $qry);
@@ -328,10 +317,6 @@
             echo '<img class="i" src="data:image/jpeg;base64,'.$row[2].'">';
             $qrytag = "select * from tags where img_id=".$row[0]."";
             $res = mysqli_query($con, $qrytag);
-            while($rtag = mysqli_fetch_array($res))
-            {
-              //echo '<p>'.$rtag[1].'</p>';
-            }
             echo '</div>';
 
           }
