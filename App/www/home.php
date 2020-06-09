@@ -46,8 +46,6 @@
           </div>
         </div>
 
-        <br>
-
         <!-- Displaying the results from the search -->
         <div id="output"></div>
 
