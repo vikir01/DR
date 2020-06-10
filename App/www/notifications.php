@@ -34,6 +34,7 @@
                 <?php
                 function displaynotification($login_session)
                 {
+                  global $host, $dbUsername, $dbPassword, $dbname;
                   $con = mysqli_connect("localhost", "root", "");
                   mysqli_select_db($con, "victorious_shots");
                   $qry = "select * from notifications where username='".$login_session."' order by id desc";
